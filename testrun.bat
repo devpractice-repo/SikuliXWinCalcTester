@@ -1,0 +1,1 @@
+java -Dsikuli.Debug=-2 -jar sikulix.jar -r projects\calcTest\mainTest.sikuli --args html

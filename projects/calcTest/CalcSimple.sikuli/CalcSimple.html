@@ -1,0 +1,204 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>CalcSimple.sikuli</h2> <a href="CalcSimple.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">from</span> sikuli <span class="kw">import</span> *
+<span class="kw">import</span> unittest
+
+<span class="kw">class</span> BaseActionsTests(unittest.TestCase):
+    <span class="str">"""Tests for base calc actions (add, sub, mul, div)"""</span>
+
+    @classmethod
+    <span class="kw">def</span> setUpClass(cls):
+        <span class="str">"""setUpClass: start calc if it was not started"""</span>
+        <span class="kw">print</span>(<span class="str">""</span>)
+        <span class="kw">print</span>(<span class="str">"=&gt; Start base actions test"</span>)
+        <span class="kw">try</span>:
+            <span class="kw">if</span> <span class="kw">not</span> exists(<img src="1534765309922.png" />):
+                <span class="kw">print</span>(<span class="str">"=&gt; Start calc"</span>)
+                App.open(<span class="str">"calc"</span>)
+        <span class="kw">except</span>:
+            App.open(<span class="str">"calc"</span>)
+
+        <span class="skw">wait</span>(<img src="1534765309922.png" />)
+        <span class="skw">type</span>(<span class="str">"1"</span>, KEY_ALT)
+
+    @classmethod
+    <span class="kw">def</span> tearDownClass(cls):
+        <span class="str">"""tearDownClass: pass"""</span>
+        <span class="kw">pass</span>
+
+    <span class="kw">def</span> setUp(self):
+        <span class="str">"""setUp: pass"""</span>
+        <span class="kw">pass</span>
+
+    <span class="kw">def</span> tearDown(self):
+        <span class="str">"""tearDown: clear calc value"""</span>
+        <span class="skw">type</span>(Key.ESC)
+
+
+    <span class="kw">def</span> test_add(self):
+        <span class="cmt">#"""Test action: add"""</span>
+        <span class="skw">click</span>(<img src="1534765352123.png" />)
+        <span class="skw">click</span>(<img src="1534765427453.png" />)
+        <span class="skw">click</span>(<img src="1534765482107.png" />)
+        <span class="skw">click</span>(<img src="1534765492363.png" />)
+        <span class="kw">if</span> exists(<img src="1534766358843.png" />):
+            self.assertTrue(True)
+        <span class="kw">else</span>:
+            self.assertTrue(False, <span class="str">"1 + 7 = 8 : ERROR!"</span>)
+
+    <span class="kw">def</span> test_sub(self):
+        <span class="cmt">#"""Test action: sub"""</span>
+        <span class="skw">click</span>(<img src="1534765482107.png" />)
+        <span class="skw">click</span>(<img src="1534765514962.png" />)
+        <span class="skw">click</span>(<img src="1534765352123.png" />)
+        <span class="skw">click</span>(<img src="1534765492363.png" />)
+        <span class="kw">if</span> exists(<img src="1534765540803.png" />):
+            self.assertTrue(True)
+        <span class="kw">else</span>:
+            self.assertTrue(False, <span class="str">"7 - 1 = 6 : ERROR!"</span>)
+
+    <span class="kw">def</span> test_mul(self):
+        <span class="cmt">#"""Test action: mul"""</span>
+        <span class="skw">click</span>(<img src="1534765482107.png" />)
+        <span class="skw">click</span>(<img src="1534765577675.png" />)
+        <span class="skw">click</span>(<img src="1534765540803.png" />)
+        <span class="skw">click</span>(<img src="1534765492363.png" />)
+        <span class="kw">if</span> exists(<img src="1534765605275.png" />):
+            self.assertTrue(True)
+        <span class="kw">else</span>:
+            self.assertTrue(False, <span class="str">"7 * 6 = 42 : ERROR!"</span>)
+
+    <span class="kw">def</span> test_div(self):
+        <span class="cmt">#"""Test action: div"""</span>
+        <span class="skw">click</span>(<img src="1534765472122.png" />)
+        <span class="skw">click</span>(<img src="1534765625202.png" />)
+        <span class="skw">click</span>(<img src="1534765633438.png" />)
+        <span class="skw">click</span>(<img src="1534765492363.png" />)
+        <span class="kw">if</span> exists(<img src="1534765656914.png" />):
+            self.assertTrue(True)
+        <span class="kw">else</span>:
+            self.assertTrue(False, <span class="str">"8 / 2 = 4 : ERROR!"</span>)
+
+
+<span class="kw">class</span> ExtendsActionsTests(unittest.TestCase):
+    <span class="str">"""Tests for extends calc actions (1/x, sqrt)"""</span>
+
+    @classmethod
+    <span class="kw">def</span> setUpClass(cls):
+        <span class="str">"""setUpClass: start calc if it was not started"""</span>
+        <span class="kw">print</span>(<span class="str">""</span>)
+        <span class="kw">print</span>(<span class="str">"=&gt; Start extends actions test"</span>)
+        <span class="kw">try</span>:
+            <span class="kw">if</span> <span class="kw">not</span> exists(<img src="1534765309922.png" />):
+                <span class="kw">print</span>(<span class="str">"=&gt; Start calc"</span>)
+                App.open(<span class="str">"calc"</span>)
+        <span class="kw">except</span>:
+            App.open(<span class="str">"calc"</span>)
+
+        <span class="skw">wait</span>(<img src="1534765309922.png" />)
+        <span class="skw">type</span>(<span class="str">"1"</span>, KEY_ALT)
+
+    @classmethod
+    <span class="kw">def</span> tearDownClass(cls):
+        <span class="str">"""tearDownClass: pass"""</span>
+        <span class="kw">pass</span>
+
+    <span class="kw">def</span> setUp(self):
+        <span class="str">"""setUp: pass"""</span>
+        <span class="kw">pass</span>
+
+    <span class="kw">def</span> tearDown(self):
+        <span class="str">"""tearDown: clear calc value"""</span>
+        <span class="skw">type</span>(Key.ESC)
+
+    <span class="kw">def</span> test_sqrt(self):
+        <span class="cmt">#"""Test action: sqrt"""</span>
+        <span class="skw">click</span>(<img src="1534765352123.png" />)
+        <span class="skw">click</span>(<img src="1534765540803.png" />)
+        <span class="skw">click</span>(<img src="1534765702272.png" />)
+        <span class="kw">if</span> exists(<img src="1534765656914.png" />):
+            self.assertTrue(True)
+        <span class="kw">else</span>:
+            self.assertTrue(False, <span class="str">"sqrt(16) = 4 : ERROR!"</span>)
+
+    <span class="kw">def</span> test_one_div_x(self):
+        <span class="cmt">#"""Test action: 1/x"""</span>
+        <span class="skw">click</span>(<img src="1534765739481.png" />)
+        <span class="skw">click</span>(<img src="1534765751339.png" />)
+        <span class="kw">if</span> exists(<img src="1534765770629.png" />):
+            self.assertTrue(True)
+        <span class="kw">else</span>:
+            self.assertTrue(False, <span class="str">"1 / 5 = 0.2 : ERROR!"</span>)
+</pre>
+</body>
+</html>
