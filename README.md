@@ -1,0 +1,1 @@
+Place the contents of the repository in the folder with the installed SikuliX
